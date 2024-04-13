@@ -1,8 +1,8 @@
 
 import { FunctionalComponent } from "preact";
-import { Ref, useRef } from "preact/hooks";
+import { useRef } from "preact/hooks";
+import { getFormField } from "../utils";
 
-const getFormField = (fieldName: string, ref: Ref<HTMLFormElement>) => (ref.current?.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement).value
 
 export const SignUp: FunctionalComponent = () => {
     const formRef = useRef<HTMLFormElement>(null)
@@ -24,7 +24,6 @@ export const SignUp: FunctionalComponent = () => {
         }
 
         fetch("http://localhost:8080/api/v1/user/signup", { method: 'POST', body: JSON.stringify(signUpData) })
-
         console.log('signup: ', signUpData)
     }
 
@@ -53,7 +52,7 @@ export const SignUp: FunctionalComponent = () => {
                 <button type="submit" class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Create an account</button>
 
                 <p class="text-sm font-light text-gray-400">
-                    Already have an account? <a href="#" class="font-medium hover:underline text-primary-500">Login here</a>
+                    Already have an account? <a href="/login" class="font-medium hover:underline text-primary-500">Login here</a>
                 </p>
             </form>
         </div>
