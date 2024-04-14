@@ -32,24 +32,26 @@ export const TablesView: FunctionComponent = ({ }) => {
         price: '2999$',
         anotherOneColumn: 'kek',
         lol: 'Lol'
-
     }]
 
     console.log('location: ', location.pathname)
 
     return (
-        <div class='w-full flex flex-col gap-y-5 p-2 '>
-            <div class='flex justify-end mb-20'>
-                <UserProfile onClick={() => route('/user')} />
-            </div>
-
-            <div class='w-full justify-between flex flex-row bg-primary-100 p-2 rounded-md'>
+        <div class='h-dvh w-full flex flex-col gap-y-5 p-2 '>
+            <div class='w-full justify-between flex flex-row bg-gray-700 text-gray-400 p-3 rounded-md'>
                 {tables.map(table => <LinkToTable source={table} active={location.pathname === `/tables/${table.tablePathName}`} />)}
             </div>
 
-            <Router>
-                {tables.map(table => <Table path={`/tables/${table.tablePathName}`} name={table.name} entities={data} />)}
-            </Router>
+            <div class='flex justify-end'>
+                <UserProfile onClick={() => route('/user')} />
+            </div>
+
+            <div class='h-full rounded-md'>
+                <Router>
+                    {tables.map(table => <Table path={`/tables/${table.tablePathName}`} name={table.name} entities={data} />)}
+                </Router>
+            </div>
+
 
         </div>
     )
@@ -58,6 +60,6 @@ export const TablesView: FunctionComponent = ({ }) => {
 
 const LinkToTable: FunctionalComponent<{ source: TableSource, active?: boolean }> = ({ source, active }) => {
     return (
-        <a class={`block px-3 py-1 bg-primary-500 rounded-lg text-white ${active ? 'bg-primary-700' : ''}`} href={`/tables/${source.tablePathName}`}>{source.name}</a>
+        <a class={`block px-3 py-1 bg-primary-700 rounded-lg text-gray-300 ${active ? 'ring-4 ring-primary-500 ring-offset-gray-700 ring-offset-2' : ''}`} href={`/tables/${source.tablePathName}`}>{source.name}</a>
     )
 }

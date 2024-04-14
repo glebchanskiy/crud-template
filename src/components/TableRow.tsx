@@ -46,7 +46,7 @@ export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate,
     const fields = Object.entries(editedEntity)
 
     return (
-        <tr class="max-w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr class="table table-fixed w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             {fields.map(field => <td class="px-6 py-4">
                 {editMode ? <input style={{ width: field[0].length + 'ch' }} class='w-40' value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
             </td>)}

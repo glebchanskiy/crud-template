@@ -10,7 +10,7 @@ export const TableHeadRow: FunctionalComponent<TableHeadRowProps> = ({ entity })
 
     console.log(names)
     return (
-        <tr>
+        <tr class='w-full table table-fixed'>
             {names.map(name =>  <th scope="col" class="px-6 py-3">
                 {name}
             </th>)}

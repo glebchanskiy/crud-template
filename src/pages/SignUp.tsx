@@ -23,12 +23,12 @@ export const SignUp: FunctionalComponent = () => {
             password
         }
 
-        fetch("http://localhost:8080/api/v1/user/signup", { method: 'POST', body: JSON.stringify(signUpData) })
+        fetch("http://localhost:8080/api/v1/user/signup", { method: 'POST', body: JSON.stringify(signUpData), headers: { 'Content-Type': 'application/json' } })
         console.log('signup: ', signUpData)
     }
 
     return (
-        <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-500 rounded-lg">
+        <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-600 rounded-lg">
             <h1 class="text-xl font-bold leading-tight tracking-tight  md:text-2xl text-white">
                 SignUp
             </h1>

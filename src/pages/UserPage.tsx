@@ -26,7 +26,7 @@ export const UserPage: FunctionalComponent = () => {
             </div>
 
 
-            <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-500 rounded-lg">
+            <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-600 rounded-lg">
 
                 <div>
                     <label for="username" class="block mb-2 text-sm font-medium text-white">Your username</label>
