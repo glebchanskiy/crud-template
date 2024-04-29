@@ -14,7 +14,7 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
     const onUpdateProfile = () => {
         if (username.length > 2) {
-            apiClient.updateUsername(username).then(() => {
+            apiClient.updateUsername({ username }).then(() => {
                 location.pathname = '/user'
                 location.reload()
             })

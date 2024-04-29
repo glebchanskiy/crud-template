@@ -93,14 +93,6 @@ const postWithBody = (
   };
 };
 
-// const get = { method: "GET" };
-
-// const post = (body?: any) => ({
-//   method: "POST",
-//   headers: { "Content-Type": "application/json" },
-//   body: JSON.stringify(body),
-// });
-
 export const apiClient: ApiClient = {
   findAllTablesInfo: async () =>
     fetch(api.urlForAllTablesInfo(), get({ auth: true }))
@@ -133,6 +125,6 @@ export const apiClient: ApiClient = {
     fetch(api.urlForAuthLogin(), postWithBody({ body }))
       .then(responseToApiResponse),
   updateUsername: async (body) =>
-    fetch(api.urlForUser(), postWithBody({ body, auth: true, disableContentType: true }))
+    fetch(api.urlForUser(), postWithBody({ body, auth: true }))
       .then(responseToApiResponse),
 };

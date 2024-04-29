@@ -26,7 +26,7 @@ export const Login: FunctionalComponent = () => {
 
         apiClient.authLogin(loginData).then(response => {
             Cookies.set('token', response.data.accessToken)
-            route('/tabes')
+            route('/tables')
             location.reload()
         })
     }

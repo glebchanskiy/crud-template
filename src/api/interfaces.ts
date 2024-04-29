@@ -26,7 +26,9 @@ export interface DelereEntityById {
   table: TableInfo;
 }
 
-export type UpdateUsername = string 
+export interface UpdateUsername {
+  username: string
+}
 
 export interface ApiResponse<T> {
   data: T;
