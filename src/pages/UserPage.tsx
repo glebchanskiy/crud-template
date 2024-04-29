@@ -52,7 +52,7 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium  text-white">Password</label>
-                    <input disabled type="password" name="password" id="password" placeholder="••••••••••••••••••••••••••••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-blue-500 focus:border-blue-500" />
+                    <input disabled type="password" name="password" id="password" placeholder="••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-blue-500 focus:border-blue-500" />
                 </div>
 
 

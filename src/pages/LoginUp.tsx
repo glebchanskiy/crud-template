@@ -45,7 +45,7 @@ export const Login: FunctionalComponent = () => {
 
                 <div>
                     <label for="password" class="block mb-2 text-sm font-medium  text-white">Password</label>
-                    <input type="password" name="password" id="password" placeholder="••••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required />
+                    <input type="password" name="password" id="password" placeholder="••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" required />
                 </div>
 
 
