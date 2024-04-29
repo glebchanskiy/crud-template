@@ -2,8 +2,9 @@ import { FunctionalComponent } from "preact";
 import { UserProfile } from "../components/UserProfile";
 import { useState } from "preact/hooks";
 import { route } from "preact-router";
-import { ApiUser } from "../api/client";
 import Cookies from "js-cookie";
+import { ApiUser } from "../api";
+import { apiClient } from "../api/client";
 
 export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
@@ -13,7 +14,11 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
     const onUpdateProfile = () => {
         if (username.length > 2) {
-            console.log('update username: ', username)
+            apiClient.updateUsername(username).then(() => {
+                location.pathname = '/user'
+                location.reload()
+            })
+
         }
     }
 

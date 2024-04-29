@@ -1,41 +1,19 @@
 import {
   api,
+  ApiResponse,
+  ApiUser,
+  AuthResponse,
   CreateEntity,
   DelereEntityById,
   GetAllTableEntities,
+  LoginData,
+  SignUpData,
   TableInfo,
   UpdateEntityById,
+  UpdateUsername,
 } from ".";
 import { Entity, responseToApiResponse } from "../utils";
 import Cookies from "js-cookie";
-
-export interface ApiResponse<T> {
-  data: T;
-  meta: {
-    status: number;
-  };
-}
-
-export interface SignUpData {
-  username: string;
-  email: string;
-  password: string;
-}
-
-export interface LoginData {
-  email: string;
-  password: string;
-}
-
-export interface ApiUser {
-  username: string;
-  email: string;
-  role: 'ROLE_USER' | 'ROLE_ADMIN';
-}
-
-export interface AuthResponse {
-  accessToken: string;
-}
 
 interface ApiClient {
   findAllTablesInfo: () => Promise<ApiResponse<TableInfo[]>>;
@@ -48,6 +26,7 @@ interface ApiClient {
   authSignUp: (body: SignUpData) => Promise<ApiResponse<AuthResponse>>;
   authLogin: (body: LoginData) => Promise<ApiResponse<AuthResponse>>;
   getUser: () => Promise<ApiResponse<ApiUser>>;
+  updateUsername: (params: UpdateUsername) => Promise<ApiResponse<ApiUser>>;
 }
 
 const get = (params: { auth?: boolean }) => {
@@ -152,5 +131,8 @@ export const apiClient: ApiClient = {
       .then(responseToApiResponse),
   authLogin: async (body) =>
     fetch(api.urlForAuthLogin(), postWithBody({ body }))
+      .then(responseToApiResponse),
+  updateUsername: async (body) =>
+    fetch(api.urlForUser(), postWithBody({ body, auth: true, disableContentType: true }))
       .then(responseToApiResponse),
 };

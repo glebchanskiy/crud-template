@@ -4,7 +4,8 @@ import Router, { route } from "preact-router";
 import { UserProfile } from "../components/UserProfile";
 import { useSignal } from "@preact/signals";
 import { useEffect } from "preact/hooks";
-import { ApiUser, apiClient } from "../api/client";
+import { apiClient } from "../api/client";
+import { ApiUser } from "../api";
 
 export type TableSource = {
     name: string
@@ -28,12 +29,14 @@ export const TablesView: FunctionComponent<{ user?: ApiUser }> = ({ user }) => {
 
     console.log('location: ', location.pathname)
 
+    
+
     return (
         <div class='h-dvh w-full flex flex-col gap-y-5 p-2 '>
             {tables.value &&
                 <>
 
-                    <div class='w-full justify-between flex flex-row bg-gray-700 text-gray-400 p-3 rounded-md'>
+                    <div class='w-full justify-start gap-3 flex flex-wrap flex-row bg-gray-700 text-gray-400 p-3 rounded-md'>
                         {tables.value.map(table => <LinkToTable source={table} active={location.pathname === `/tables/${table.tablePathName}`} />)}
                     </div>
 

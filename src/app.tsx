@@ -4,10 +4,13 @@ import { SignUp } from "./pages/SignUp";
 import { TablesView } from "./pages/TablesView";
 import { UserPage } from "./pages/UserPage";
 import { useEffect, useState } from "preact/hooks";
-import { ApiUser, apiClient } from "./api/client";
+import { apiClient } from "./api/client";
+import { ApiUser } from "./api";
 
 
 export function App() {
+  
+  if (location.pathname === '/' || location.pathname === '') route('/tables')
 
   const [user, setUser] = useState<ApiUser>()
   useEffect(() => {
@@ -16,7 +19,7 @@ export function App() {
         route('/signup', true)
       } else if (res.meta.status === 200) {
         setUser(res.data)
-        route('/tables')
+        // route('/tables')
       } else {
         route('/signup', true)
       }

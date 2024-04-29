@@ -25,3 +25,33 @@ export interface DelereEntityById {
   id: number
   table: TableInfo;
 }
+
+export type UpdateUsername = string 
+
+export interface ApiResponse<T> {
+  data: T;
+  meta: {
+    status: number;
+  };
+}
+
+export interface SignUpData {
+  username: string;
+  email: string;
+  password: string;
+}
+
+export interface LoginData {
+  email: string;
+  password: string;
+}
+
+export interface ApiUser {
+  username: string;
+  email: string;
+  role: 'ROLE_USER' | 'ROLE_ADMIN';
+}
+
+export interface AuthResponse {
+  accessToken: string;
+}
