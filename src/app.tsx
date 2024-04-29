@@ -1,32 +1,35 @@
-import Router, { RouterOnChangeArgs, route } from "preact-router";
+import Router, { route } from "preact-router";
 import { Login } from "./pages/LoginUp";
 import { SignUp } from "./pages/SignUp";
 import { TablesView } from "./pages/TablesView";
 import { UserPage } from "./pages/UserPage";
+import { useEffect, useState } from "preact/hooks";
+import { ApiUser, apiClient } from "./api/client";
 
-
-const authMethod = async () => true
-
-const handleRoute = async (e: RouterOnChangeArgs) => {
-  const secur = ['/tables', '/user']
-
-  if (secur.some(s => e.url.includes(s))) {
-    const isAuthed = await authMethod();
-    if (!isAuthed) route('/signup', true);
-  }
-};
 
 export function App() {
 
-  return (
-    <Router onChange={handleRoute}>
-      {/* <Redirect path="/" to="/tables" /> */}
+  const [user, setUser] = useState<ApiUser>()
+  useEffect(() => {
+    apiClient.getUser().then(res => {
+      if (res.meta.status === 401) {
+        route('/signup', true)
+      } else if (res.meta.status === 200) {
+        setUser(res.data)
+        route('/tables')
+      } else {
+        route('/signup', true)
+      }
+    })
+  }, [])
 
+  return (
+    <Router>
       <SignUp path="/signup" />
       <Login path="/login" />
-      <UserPage path="/user" />
 
-      <TablesView path="/tables/:tabel?" />
+      <UserPage path="/user" user={user} />
+      <TablesView user={user} path="/tables/:tabel?" />
     </Router>
   )
 }

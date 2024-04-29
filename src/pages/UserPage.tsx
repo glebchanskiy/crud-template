@@ -2,14 +2,12 @@ import { FunctionalComponent } from "preact";
 import { UserProfile } from "../components/UserProfile";
 import { useState } from "preact/hooks";
 import { route } from "preact-router";
+import { ApiUser } from "../api/client";
+import Cookies from "js-cookie";
 
-export const UserPage: FunctionalComponent = () => {
-    const user = {
-        username: 'glebchanskiy',
-        email: 'glebchanskiy@kek.com',
-        role: 'ADMIN',
+export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
-    }
+    if (!user) return <></>
 
     const [username, setUsername] = useState(user.username)
 
@@ -19,12 +17,16 @@ export const UserPage: FunctionalComponent = () => {
         }
     }
 
+    const onLogoutProfile = () => {
+        Cookies.remove('token')
+        location.reload()
+    }
+
     return (
         <div class='w-full flex flex-col gap-y-5 p-2 '>
             <div class='flex justify-end mb-20'>
-                <UserProfile />
+                <UserProfile user={user} />
             </div>
-
 
             <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-600 rounded-lg">
 
@@ -50,6 +52,7 @@ export const UserPage: FunctionalComponent = () => {
 
 
                 <button onClick={onUpdateProfile} class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update</button>
+                <button onClick={onLogoutProfile} class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Logout</button>
             </div>
 
 

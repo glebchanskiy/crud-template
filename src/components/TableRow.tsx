@@ -1,6 +1,6 @@
 import { FunctionalComponent } from "preact";
 import { Entity } from "../utils";
-import { useState } from "preact/hooks";
+import { useEffect, useState } from "preact/hooks";
 import { EditIcon } from "../icons/EditIcon";
 import { SaveIcon } from "../icons/SaveIcon";
 import { CloseIcon } from "../icons/CloseIcon";
@@ -16,6 +16,10 @@ export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate,
 
     const [editMode, setEditMode] = useState(false)
     const [editedEntity, setEditedEntity] = useState(entity)
+
+    useEffect(() => {
+        setEditedEntity(entity)
+    }, [entity])
 
     const onFieldChange = (key: string, value: string) => {
         const temp = { ...editedEntity }
@@ -45,13 +49,15 @@ export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate,
 
     const fields = Object.entries(editedEntity)
 
+
+
     return (
-        <tr class="table table-fixed w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+        <tr class="group table table-fixed w-full bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
             {fields.map(field => <td class="px-6 py-4">
-                {editMode ? <input style={{ width: field[0].length + 'ch' }} class='w-40' value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
+                {editMode ? <input disabled={field[0] === 'id'} style={{ width: (field[0].length + 2) + 'ch' }} class={`w-40  ${field[0] === 'id' ? 'disabled bg-gray-800 group-hover:bg-gray-600' : ''} `} value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
             </td>)}
 
-            <td class="w-20 flex px-6 py-4 gap-5">
+            <td class="w-36 ml-auto flex px-6 py-4 gap-5">
                 {!editMode && <button onClick={onEditClick} class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><EditIcon /></button>}
                 {editMode && <button onClick={onCloseClick} class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><CloseIcon/></button>}
                 {editMode && <button onClick={onSaveClick} class="font-medium text-blue-600 dark:text-blue-500 hover:underline"><SaveIcon /></button>} 

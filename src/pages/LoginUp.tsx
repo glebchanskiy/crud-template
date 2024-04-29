@@ -2,6 +2,9 @@
 import { FunctionalComponent } from "preact";
 import { useRef } from "preact/hooks";
 import { getFormField } from "../utils";
+import { apiClient } from "../api/client";
+import Cookies from "js-cookie";
+import { route } from "preact-router";
 
 
 export const Login: FunctionalComponent = () => {
@@ -21,7 +24,11 @@ export const Login: FunctionalComponent = () => {
             password
         }
 
-        fetch("http://localhost:8080/api/v1/user/signup", { method: 'POST', body: JSON.stringify(loginData) })
+        apiClient.authLogin(loginData).then(response => {
+            Cookies.set('token', response.data.accessToken)
+            route('/tabes')
+            location.reload()
+        })
     }
 
     return (
