@@ -55,7 +55,7 @@ export const Table: FunctionalComponent<{ table: TableInfo }> = ({ table }) => {
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                         </svg>
                     </div>
-                    <input ref={searchRef} onInput={(e) => chageQuery(e.currentTarget.value)} type="text" id="table-search" class="block py-2 ps-10 text-sm  w-80 rounded-lg bg-secondary placeholder-text placeholder-opacity-50 focus:ring-4 focus:ring-offset-gray-500 focus:ring-offset-2 focus:ring-blue-500 !outline-none transition-this" placeholder="Search for items (Cmd/Ctrl + K)" />
+                    <input ref={searchRef} onInput={(e) => chageQuery(e.currentTarget.value)} type="text" id="table-search" class="block py-2 ps-10 text-sm  w-80 rounded-lg bg-secondary placeholder-text placeholder-opacity-50 focus:ring-4 focus:ring-offset-back focus:ring-offset-2 focus:ring-blue-500 !outline-none transition-this" placeholder="Search for items (Cmd/Ctrl + K)" />
                 </div>
                 <div class='px-3  bg-secondary border-gray-600 rounded-lg uppercase text-[25px]'>
                     {table.name}

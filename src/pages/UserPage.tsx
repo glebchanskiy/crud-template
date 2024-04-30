@@ -37,7 +37,7 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
                 <div>
                     <label for="username" class="block mb-2 text-sm font-medium ">Your username</label>
-                    <input value={username} onInput={(e) => setUsername(e.currentTarget.value)} type="text" name="username" id="username" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" placeholder="username" />
+                    <input value={username} onInput={(e) => setUsername(e.currentTarget.value)} type="text" name="username" id="username" class=" border focus:!outline-none sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" placeholder="username" />
                 </div>
 
                 <div>

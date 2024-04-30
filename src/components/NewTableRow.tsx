@@ -46,9 +46,9 @@ export const NewTableRow: FunctionalComponent<NewTableRowProps> = ({ entity, onC
     const fields = Object.entries(editedEntity)
 
     return (
-        <tr class="group table table-fixed w-full bg-table border-b border-secondary hover:bg-secondary">
+        <tr class="group table table-fixed w-full bg-table border-b border-secondary hover:bg-secondary transition-this">
             {fields.map(field => <td class="px-6 py-4">
-                {editMode ? <input disabled={field[0] === 'id'} style={{ width: field[0].length + 'ch' }} class={`w-40 rounded-sm bg-back ${field[0] === 'id' ? 'disabled bg-table group-hover:bg-gray-600' : ''}`} value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
+                {editMode ? <input disabled={field[0] === 'id'} style={{ width: field[0].length + 'ch' }} class={`w-40 focus:!outline-none rounded-sm bg-back ${field[0] === 'id' ? 'disabled bg-table group-hover:bg-secondary' : ''} transition-this`} value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
             </td>)}
 
             <td class="w-36 ml-auto flex px-6 py-4 gap-5">
