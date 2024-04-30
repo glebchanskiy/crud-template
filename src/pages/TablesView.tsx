@@ -29,14 +29,14 @@ export const TablesView: FunctionComponent<{ user?: ApiUser }> = ({ user }) => {
 
     console.log('location: ', location.pathname)
 
-    
+
 
     return (
         <div class='h-dvh w-full flex flex-col gap-y-5 p-2 '>
             {tables.value &&
                 <>
 
-                    <div class='w-full justify-start gap-3 flex flex-wrap flex-row bg-gray-700 text-gray-400 p-3 rounded-md'>
+                    <div class='w-full justify-start gap-3 flex flex-wrap flex-row bg-secondary  p-3 rounded-md text-text'>
                         {tables.value.map(table => <LinkToTable source={table} active={location.pathname === `/tables/${table.tablePathName}`} />)}
                     </div>
 
@@ -60,6 +60,6 @@ export const TablesView: FunctionComponent<{ user?: ApiUser }> = ({ user }) => {
 
 const LinkToTable: FunctionalComponent<{ source: TableSource, active?: boolean }> = ({ source, active }) => {
     return (
-        <a class={`block px-3 py-1 bg-primary-700 rounded-lg text-gray-300 ${active ? 'ring-4 ring-primary-500 ring-offset-gray-700 ring-offset-2' : ''}`} href={`/tables/${source.tablePathName}`}>{source.name}</a>
+        <a class={`block text-text px-3 py-1 bg-primary-700 rounded-lg  ${active ? 'ring-4 ring-primary-500 ring-offset-secondary ring-offset-2' : 'border border-primary-600'} transition-this`} href={`/tables/${source.tablePathName}`}>{source.name}</a>
     )
 }

@@ -1,5 +1,5 @@
 import { FunctionalComponent } from "preact"
-import { ApiUser } from "../api/client"
+import { ApiUser } from "../api"
 
 export const UserProfile: FunctionalComponent<{ onClick?: () => void, user: ApiUser }> = ({ onClick, user }) => {
     return (

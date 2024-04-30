@@ -33,35 +33,35 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
                 <UserProfile user={user} />
             </div>
 
-            <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-gray-600 rounded-lg">
+            <div class="mx-auto mt-10 w-96 p-6 space-y-4 md:space-y-6 sm:p-8 0 bg-table rounded-lg">
 
                 <div>
-                    <label for="username" class="block mb-2 text-sm font-medium text-white">Your username</label>
-                    <input value={username} onInput={(e) => setUsername(e.currentTarget.value)} type="text" name="username" id="username" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white focus:ring-blue-500 focus:border-blue-500" placeholder="username" />
+                    <label for="username" class="block mb-2 text-sm font-medium ">Your username</label>
+                    <input value={username} onInput={(e) => setUsername(e.currentTarget.value)} type="text" name="username" id="username" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" placeholder="username" />
                 </div>
 
                 <div>
-                    <label for="role" class="block mb-2 text-sm font-medium text-white">Your role</label>
-                    <input disabled value={user.role} type="text" name="role" id="role" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-blue-500 focus:border-blue-500" />
+                    <label for="role" class="block mb-2 text-sm font-medium">Your role</label>
+                    <input disabled placeholder={user.role} type="text" name="role" id="role" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" />
                 </div>
 
                 <div>
-                    <label for="email" class="block mb-2 text-sm font-medium  text-white">Your email</label>
-                    <input disabled value={user.email} type="email" name="email" id="email" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-blue-500 focus:border-blue-500" placeholder="name@company.com" />
+                    <label for="email" class="block mb-2 text-sm font-medium">Your email</label>
+                    <input disabled placeholder={user.email} type="email" name="email" id="email" class=" border sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" />
                 </div>
 
                 <div>
-                    <label for="password" class="block mb-2 text-sm font-medium  text-white">Password</label>
-                    <input disabled type="password" name="password" id="password" placeholder="••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-gray-400 focus:ring-blue-500 focus:border-blue-500" />
+                    <label for="password" class="block mb-2 text-sm font-medium ">Password</label>
+                    <input disabled type="password" name="password" id="password" placeholder="••••••" class=" border   sm:text-sm rounded-lg  block w-full p-2.5 bg-secondary border-gray-600 placeholder-gray-400  focus:ring-blue-500 focus:border-blue-500" />
                 </div>
 
 
-                <button onClick={onUpdateProfile} class="w-full text-white bg-primary-600 hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Update</button>
-                <button onClick={onLogoutProfile} class="w-full text-white bg-red-600 hover:bg-red-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Logout</button>
+                <button onClick={onUpdateProfile} class="w-full  bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-this">Update</button>
+                <button onClick={onLogoutProfile} class="w-full  bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-this">Logout</button>
             </div>
 
 
-            <button onClick={() => route('/tables')} class='mx-auto w-28 py-1 bg-gray-200 rounded-md'>
+            <button onClick={() => route('/tables')} class='mx-auto w-28 py-1 bg-table rounded-md transition-this'>
                 Go Back
             </button>
 
