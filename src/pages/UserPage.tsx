@@ -57,7 +57,7 @@ export const UserPage: FunctionalComponent<{ user?: ApiUser }> = ({ user }) => {
 
 
                 <button onClick={onUpdateProfile} class="w-full  bg-primary-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-this">Update</button>
-                <button onClick={onLogoutProfile} class="w-full  bg-red-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-this">Logout</button>
+                <button onClick={onLogoutProfile} class="w-full  bg-red-500 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center transition-this">Logout</button>
             </div>
 
 
