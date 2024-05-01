@@ -7,12 +7,13 @@ import { CloseIcon } from "../icons/CloseIcon";
 import { DeleteIcon } from "../icons/DeleteIcon";
 
 export type TableRowProps = {
+    isAdmin?: boolean
     entity: Entity
     onUpdate: (entity: Entity) => void
     onDelete: (entity: Entity) => void
 }
 
-export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate, onDelete  }) => {
+export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate, onDelete, isAdmin }) => {
 
     const [editMode, setEditMode] = useState(false)
     const [editedEntity, setEditedEntity] = useState(entity)
@@ -33,17 +34,17 @@ export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate,
 
     const onSaveClick = () => {
         onUpdate(editedEntity)
-        setEditMode(false) 
+        setEditMode(false)
     }
 
     const onCloseClick = () => {
         setEditedEntity(entity)
-        setEditMode(false) 
+        setEditMode(false)
     }
 
     const onDeleteClick = () => {
         onDelete(editedEntity)
-        setEditMode(false) 
+        setEditMode(false)
     }
 
 
@@ -57,12 +58,14 @@ export const TableRow: FunctionalComponent<TableRowProps> = ({ entity, onUpdate,
                 {editMode ? <input disabled={field[0] === 'id'} style={{ width: (field[0].length + 2) + 'ch' }} class={`w-40 focus:!outline-none rounded-sm bg-back ${field[0] === 'id' ? 'disabled bg-table group-hover:bg-secondary' : ''} transition-this`} value={field[1]} onInput={(e) => onFieldChange(field[0], e.currentTarget.value)} /> : field[1]}
             </td>)}
 
-            <td class="w-36 ml-auto flex px-6 py-4 gap-5">
-                {!editMode && <button onClick={onEditClick} class="font-medium text-blue-500 hover:underline"><EditIcon /></button>}
-                {editMode && <button onClick={onCloseClick} class="font-medium text-blue-500 hover:underline"><CloseIcon/></button>}
-                {editMode && <button onClick={onSaveClick} class="font-medium text-blue-500 hover:underline"><SaveIcon /></button>} 
-                {editMode && <button onClick={onDeleteClick} class="font-medium text-blue-500 hover:underline"><DeleteIcon/></button>}
-            </td>
+            {isAdmin &&
+                <td class="w-36 ml-auto flex px-6 py-4 gap-5">
+                    {!editMode && <button onClick={onEditClick} class="font-medium text-blue-500 hover:underline"><EditIcon /></button>}
+                    {editMode && <button onClick={onCloseClick} class="font-medium text-blue-500 hover:underline"><CloseIcon /></button>}
+                    {editMode && <button onClick={onSaveClick} class="font-medium text-blue-500 hover:underline"><SaveIcon /></button>}
+                    {editMode && <button onClick={onDeleteClick} class="font-medium text-blue-500 hover:underline"><DeleteIcon /></button>}
+                </td>
+            }
         </tr>
     )
 }

@@ -3,9 +3,10 @@ import { Entity, camelCaseToWords } from "../utils";
 
 export type TableHeadRowProps = {
     entity: Entity
+    isAdmin?: boolean
 }
 
-export const TableHeadRow: FunctionalComponent<TableHeadRowProps> = ({ entity }) => {
+export const TableHeadRow: FunctionalComponent<TableHeadRowProps> = ({ entity, isAdmin }) => {
     const names = Object.keys(entity).map(camelCaseToWords)
 
     console.log(names)
@@ -15,12 +16,13 @@ export const TableHeadRow: FunctionalComponent<TableHeadRowProps> = ({ entity })
                 {name}
             </th>)}
 
-            <th scope="col" class="px-6 py-3">
+            {isAdmin && <th scope="col" class="px-6 py-3">
                 <span class='block w-28 ml-auto'>
                     Action
                 </span>
 
-            </th>
+            </th>}
+
         </tr>
     )
 }

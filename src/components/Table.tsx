@@ -7,9 +7,9 @@ import { Entity } from "../utils";
 import { useKeyPress } from "../hooks.ts/useKeyPress";
 import { useSignal } from "@preact/signals";
 import { apiClient } from "../api/client";
-import { TableInfo } from "../api";
+import { ApiUser, TableInfo } from "../api";
 
-export const Table: FunctionalComponent<{ table: TableInfo }> = ({ table }) => {
+export const Table: FunctionalComponent<{ table: TableInfo, user: ApiUser }> = ({ table, user }) => {
     const [query, setQuery] = useState<string>()
     const searchRef = useRef<HTMLInputElement>(null)
 
@@ -67,11 +67,12 @@ export const Table: FunctionalComponent<{ table: TableInfo }> = ({ table }) => {
                 {
                     entities.value && entities.value.length > 0 && <>
                         <thead class="text-xs uppercase bg-secondary ">
-                            <TableHeadRow entity={entities.value[0]} />
-                            <NewTableRow entity={entities.value[0]} onCreate={(e) => {
+                            <TableHeadRow entity={entities.value[0]} isAdmin={user.role === 'ROLE_ADMIN'}/>
+                            {user.role === 'ROLE_ADMIN' &&  <NewTableRow entity={entities.value[0]} onCreate={(e) => {
                                 apiClient.create({ entity: e, table }).then(res => filterOnAdd(res.data))
                                 
-                            }} />
+                            }} />}
+                           
                         </thead>
                         <tbody class='block h-full overflow-scroll'>
 
@@ -80,7 +81,7 @@ export const Table: FunctionalComponent<{ table: TableInfo }> = ({ table }) => {
                                 <TableRow entity={entity} onDelete={() => {
                                     apiClient.delete({ id: entity.id as any, table })
                                     filterOnDelete(entity.id)
-                                }} onUpdate={(e) => apiClient.update({ entity: e, id: entity.id as any, table })} />
+                                }} onUpdate={(e) => apiClient.update({ entity: e, id: entity.id as any, table })} isAdmin={user.role === 'ROLE_ADMIN'} />
                             </>)}
 
 

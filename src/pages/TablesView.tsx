@@ -46,7 +46,7 @@ export const TablesView: FunctionComponent<{ user?: ApiUser }> = ({ user }) => {
 
                     <div class='h-full rounded-md'>
                         <Router>
-                            {tables.value.map(table => <Table path={`/tables/${table.tablePathName}`} table={table} />)}
+                            {tables.value.map(table => <Table path={`/tables/${table.tablePathName}`} table={table} user={user} />)}
                         </Router>
                     </div>
                 </>
