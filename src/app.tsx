@@ -16,12 +16,12 @@ export function App() {
   useEffect(() => {
     apiClient.getUser().then(res => {
       if (res.meta.status === 401) {
-        route('/signup', true)
+        route('/login', true)
       } else if (res.meta.status === 200) {
         setUser(res.data)
         // route('/tables')
       } else {
-        route('/signup', true)
+        route('/login', true)
       }
     })
   }, [])
