@@ -1,7 +1,8 @@
 import { Ref } from "preact/hooks";
-import { ApiResponse } from "./api/client";
+import { ApiResponse } from "./api";
 
 export type Entity = { [key: string]: string | undefined }
+
 
 export const getFormField = (fieldName: string, ref: Ref<HTMLFormElement>) => (ref.current?.querySelector(`input[name="${fieldName}"]`) as HTMLInputElement).value
 

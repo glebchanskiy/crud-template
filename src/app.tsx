@@ -12,19 +12,23 @@ export function App() {
   
   if (location.pathname === '/' || location.pathname === '') route('/tables')
 
+  
+  // local storage/variable
   const [user, setUser] = useState<ApiUser>()
+
+
   useEffect(() => {
     apiClient.getUser().then(res => {
+
       if (res.meta.status === 401) {
         route('/login', true)
       } else if (res.meta.status === 200) {
         setUser(res.data)
-        // route('/tables')
       } else {
         route('/login', true)
       }
     })
-  }, [])
+  }, []) 
 
   return (
     <Router>
@@ -32,7 +36,8 @@ export function App() {
       <Login path="/login" />
 
       <UserPage path="/user" user={user} />
-      <TablesView user={user} path="/tables/:tabel?" />
+
+      <TablesView path="/tables/:tabel?" user={user}  />
     </Router>
   )
 }
